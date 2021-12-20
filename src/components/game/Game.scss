@@ -1,0 +1,168 @@
+$accent-red: #CC3260;
+$accent-green: #9ADC68;
+$accent-blue: #4280DE;
+$accent-yellow: #E9F650;
+$transparent-elements: #2d2b2c41;
+$white: #E4E5E7;
+$whiteR: #f0f0f0;
+$black: #2D2B2C;
+$blackTransparent: #2D2B2C20;
+.game-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 800px;
+  max-height: 1000px;
+}
+.game{
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 20px;
+  gap: 10px;
+  max-width: 1400px;
+  margin: 0 auto;
+  user-select: none;
+}
+.game-field{
+  display: grid;
+  grid-template-columns: repeat(3, 400px);
+  width: 100%;
+  gap: 10px;
+}
+.game__block{
+  display: grid;
+  grid-template-rows: auto 1fr;
+  width: 100%;
+  padding: 20px;
+  gap: 10px;
+  // margin: 0 auto;
+  text-align: center;
+}
+.block__header{
+  font-size: 2rem;
+  color: $white;
+}
+.computer-block{
+  background-color: $accent-red;
+}
+.score-block{
+  background-color: $accent-green;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  .score-block__header{
+    font-size: 2.8rem;
+    font-weight: 800;
+    text-align: center;
+    color: $white;
+    // -webkit-text-stroke: 4px $black;
+    text-shadow: 4px 4px 12px $black;
+
+  }
+  .score{
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: $white;
+    -webkit-text-stroke: 4px $black;
+    border-bottom: 4px solid $black;
+  }
+
+  .score-block__scores{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+  }
+  .game-over-screen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    padding-top: 20px;
+    gap: 30px;
+    .who-wins, .who-wins--game,
+    .who-wins-result{
+      font-weight: 800;
+      color: $white;
+      -webkit-text-stroke: 3px $black;
+    }
+    .who-wins{
+      font-size: 2.2rem;
+    }
+    .who-wins--game{
+      font-size: 3.8rem;
+      line-height: 70px;
+    }
+    .round-x{
+      font-size: 2.8rem;
+    }
+    .who-wins-result{
+      font-size: 3.8rem;
+      line-height: 60px;
+    }
+    
+    .play-again{
+      padding: 10px 50px;
+      border: 4px solid $black;
+      border-radius: 18px;
+      background-color: $accent-red;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: $white;
+      transition: box-shadow .2s, color .2s;
+      &:hover{
+        color: $whiteR;
+        box-shadow: 4px 4px 12px $black;
+      }
+    }
+    .who-wins--winner{
+      font-size: 2.8rem;
+      color: $white;
+      line-height: 40px;
+      padding: 20px 0;
+    }
+  }
+}
+.player-block {
+  background-color: $accent-blue;
+}
+// CARDS 
+.card-container{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  gap: 30px;
+  padding: 20px;
+  background-color: $white;
+  min-height: 200px;
+}
+.hand-card{
+  cursor: pointer;
+  width: 150px;
+  transition: scale .4s, transform .4s, filter .4s;
+  filter: drop-shadow(0px 4px 3px #33333399);
+  &:hover{
+    scale: 1.5;
+    transform: translateY(-25%);
+    filter: drop-shadow(0px 18px 3px #33333399);
+  }
+  .card-image{
+    width: 100%;
+  }
+}
+.hand-card.chosen{
+  filter: drop-shadow(0px 18px 3px #33333399);
+  cursor: default;
+  scale: 2;
+  &:hover{
+    transform: translateY(0);
+  }
+}
+.block__card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.no-entry-yet{
+  font-size: 20rem;
+  color: $blackTransparent;
+}

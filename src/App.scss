@@ -1,0 +1,38 @@
+$accent-green: #9ADC68;
+$black: #2D2B2C;
+
+*, a, h1, h2, h3, h4, h5, h6 {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  color: $black;
+  font-size: 18px;
+}
+a, button{
+  cursor: pointer;
+}
+div{
+  border-radius: 8px;
+}
+.App{
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+  gap: 10px;
+  background-color: $black;
+}
+.App-header{
+  background-color: $black;
+  width: 100%;
+  text-align: center;
+  user-select: none;
+  h1{
+    color: $accent-green;
+    font-size: 2rem;
+    font-weight: 800;
+    padding: 10px;
+    padding-bottom: 0;
+  }
+}
