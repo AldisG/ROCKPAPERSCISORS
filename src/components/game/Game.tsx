@@ -107,12 +107,12 @@ const Game = () => {
     if (canKeepPlaying) {
       if (!computerThinking) {
         if (counterOfCurrentChoicePresses === gameTurnAmount - 1) {
-          setTimeout(() => {
-            setplayersChoice(choice);
-            setcanKeepPlaying(false);
-            determineWinner();
-            // Play TADAAAA sound!
-          }, 200);
+          // setTimeout(() => {
+          setplayersChoice(choice);
+          setcanKeepPlaying(false);
+          determineWinner();
+          // Play TADAAAA sound!
+          // }, 1500);
         }
       }
       if (counterOfCurrentChoicePresses < gameTurnAmount) {
@@ -126,7 +126,7 @@ const Game = () => {
           // play soybnd
           computerActedSound.play();
           setcounterOfCurrentChoicePresses(counterOfCurrentChoicePresses + 1);
-        }, 200);
+        }, 500);
       }
     }
   };

@@ -35,7 +35,9 @@ const Card:FC<Props> = ({ handCard, playerChosedCard, computerThinking }) => {
           cantClickSound.play();
         }
       }}
-      onMouseEnter={() => hoverSound.play()}
+      onMouseEnter={() => {
+        hoverSound.play();
+      }}
     >
       <img src={img} alt="" className="card-image" />
     </div>
