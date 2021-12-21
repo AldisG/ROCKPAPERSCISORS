@@ -118,7 +118,7 @@ const Game:FC<Props> = ({ gameAmount }) => {
           setplayersChoice(choice);
           setgameOver(true);
           setcanKeepPlaying(false);
-        }, 800);
+        }, 1200);
       }
     }
     if (canKeepPlaying) {
@@ -132,7 +132,7 @@ const Game:FC<Props> = ({ gameAmount }) => {
           setComputersChoice(computerChosed);
           computerActedSound.play();
           setcounterOfCurrentChoicePresses(counterOfCurrentChoicePresses + 1);
-        }, 1500);
+        }, 800);
       }
     }
   };

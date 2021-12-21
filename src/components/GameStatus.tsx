@@ -51,7 +51,7 @@ const GameStatus:FC<Props> = ({
   return (
     <div className="game-over-screen">
       <h3 className="who-wins--game">
-        Game's is over!
+        Game is over!
       </h3>
       <h3 className="who-wins--winner">
         {finalWinnerIs()}

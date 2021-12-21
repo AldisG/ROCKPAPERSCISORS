@@ -50,8 +50,10 @@ const App = () => {
               <div className="rules">
                 <b>The game is simple.</b>
                 <br />
-                Each sign beats two and gets beaten by two.
-                Here is the (penta)gram, of how it works!
+                Each symbol beats two (arrow to) and gets beaten by two (arrow from).
+                Here is the (penta)gram, on how it works.
+                <br />
+                Good luck!
                 <div className="mascot tutorial">
                   <img src={tutorial} alt="" />
                 </div>
