@@ -132,7 +132,7 @@ const Game:FC<Props> = ({ gameAmount }) => {
           setComputersChoice(computerChosed);
           computerActedSound.play();
           setcounterOfCurrentChoicePresses(counterOfCurrentChoicePresses + 1);
-        }, 500);
+        }, 1500);
       }
     }
   };

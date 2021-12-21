@@ -73,6 +73,9 @@ div{
     pointer-events: none;
   }
 }
+.button-dificulity{
+  z-index: 100;
+}
 .modal-game-start{
   display: flex;
   flex-direction: column;
@@ -85,15 +88,49 @@ div{
   min-width: 500px;
   // max-width: 900px;
   z-index: 2;
-  background-color: #fff;
+  background-color: rgb(239, 245, 245);
 }
 .game-dificulity--h1{
   font-size: 3rem;
 }
 .game-rules{
   display: flex;
+  align-items: center;
   width: 100%;
   justify-content: space-around;
+  .rules{
+    max-width: 450px;
+  }
+}
+.rules{
+
+  font-size: 1.2rem;
+  display: grid;
+  justify-items: center;
+
+  background-color: #fff;
+  outline: 4px solid $black;
+  padding: 20px;
+  position: relative;
+  &::after{
+    content: '';
+    position: absolute;
+    top: 30%;
+    right: -25px;
+    background-color: #fff;
+    border-right: 4px solid $black;
+    border-top: 4px solid $black;
+    width: 40px;
+    height: 40px;
+    transform: rotate(45deg);
+    // z-index: -1;
+  }
+}
+.mascot{
+  img{
+    max-width:  300px;
+    filter: drop-shadow(0px 10px 8px #33333399);
+  }
 }
 .game-dificulity--h3{
   font-size: 2rem;
@@ -103,6 +140,7 @@ div{
   align-items: center;
   gap: 20px;
 }
+
 .button-dificulity{
   font-size: 1.6rem;
   padding: 10px 30px;
@@ -110,6 +148,7 @@ div{
   cursor: pointer;
   border: none;
   border-radius: 8px;
+  box-shadow: 0px 10px 8px #33333399;
   &:hover, &:focus{
     outline: 5px solid $accent-blue;
   }
