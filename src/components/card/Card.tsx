@@ -2,7 +2,7 @@ import { FC } from 'react';
 // @ts-ignore
 import hover from '../../assets/sounds/jump.wav';
 // @ts-ignore
-import click from '../../assets/sounds/clickmenu.wav';
+import click from '../../assets/sounds/hitHurt.wav';
 // @ts-ignore
 import cantClick from '../../assets/sounds/cantClick.wav';
 
@@ -24,7 +24,7 @@ const Card:FC<Props> = ({
   const clickSound = new Audio(click);
   const cantClickSound = new Audio(cantClick);
   hoverSound.volume = 0.1;
-  clickSound.volume = 0.5;
+  clickSound.volume = 0.2;
   cantClickSound.volume = 0.3;
   return (
     <div

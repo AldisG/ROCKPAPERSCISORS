@@ -1,5 +1,5 @@
 import rock from '../assets/rock.png';
-import paper from '../assets/paper.png';
+import paper from '../assets/papers.png';
 import scissor from '../assets/scissor.png';
 import spock from '../assets/spock.png';
 import lizzard from '../assets/lizzard.png';

@@ -1,4 +1,6 @@
+$accent-red: #CC3260;
 $accent-green: #9ADC68;
+$accent-blue: #4280DE;
 $accent-green-dark: #5a9131;
 $black: #2D2B2C;
 
@@ -53,4 +55,73 @@ div{
   &:active{
     background-color: $accent-green-dark;
   }
+}
+// MODAL & GAME SETUP
+.modal-wrapper{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index:3;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transition: opacity .2s;
+  &.hide-modal{
+    opacity: 0;
+    cursor: default;
+    pointer-events: none;
+  }
+}
+.modal-game-start{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  padding: 50px;
+  position: absolute;
+  min-height: 500px;
+  min-width: 500px;
+  max-width: 900px;
+  z-index: 2;
+  background-color: #fff;
+}
+.game-dificulity--h1{
+  font-size: 3rem;
+}
+.game-dificulity--h3{
+  font-size: 2rem;
+}
+.game-dificulity{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.button-dificulity{
+  font-size: 1.6rem;
+  padding: 10px 30px;
+  background-color: $accent-green;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  &:hover, &:focus{
+    outline: 5px solid $accent-blue;
+  }
+  &:active{
+    outline: 8px solid $accent-red;
+  }
+}
+// BG
+.modal-game-start-bg{
+  position: absolute;
+  height: 120vh;
+  width: 120vw;
+  z-index: 1;
+  background-image: url('./assets/bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 1;
+  filter: blur(40px);
 }

@@ -101,6 +101,10 @@ $blackTransparent: #2D2B2C20;
     }
     
     .play-again{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
       padding: 10px 50px;
       border: 4px solid $black;
       border-radius: 18px;
@@ -168,6 +172,7 @@ $blackTransparent: #2D2B2C20;
   & .hide{
     opacity: .3 !important;
   }
+  
 }
 .hand-card.chosen.hide{
     opacity: .3 !important;
@@ -180,4 +185,18 @@ $blackTransparent: #2D2B2C20;
 .no-entry-yet{
   font-size: 20rem;
   color: $blackTransparent;
+}
+.no-shadow{
+  animation: rotation 2s linear infinite;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.icon{
+  width: 40px;
 }

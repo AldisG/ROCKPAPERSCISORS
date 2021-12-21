@@ -4,6 +4,7 @@ import { FC } from 'react';
 import hover from '../assets/sounds/jump.wav';
 // @ts-ignore
 import wonRound from '../assets/sounds/wonRound.wav';
+import reloadIcon from '../assets/reload.png';
 
 type Props ={
   counterOfCurrentChoicePresses: number,
@@ -60,6 +61,7 @@ const GameStatus:FC<Props> = ({
           className="play-again"
           onMouseEnter={() => hoverSound.play()}
         >
+          <span><img className="icon" src={reloadIcon} alt="" /></span>
           Play Again
         </button>
       </form>

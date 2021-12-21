@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 
 import Card from '../card/Card';
 import ChosenCard from '../card/ChosenCard';
 import { cardList } from '../cardsToDisplay';
 import GameStatus from '../GameStatus';
 import './Game.scss';
-
+import thinking from '../../assets/thinking.png';
 // @ts-ignore
 import computerActed from '../../assets/sounds/compActed.wav';
 
@@ -13,7 +13,12 @@ import computerActed from '../../assets/sounds/compActed.wav';
 const noEntryYet = (<span className="no-entry-yet">?</span>);
 const computersAvailableChoices = cardList.map(({ cardName }) => cardName);
 
-const Game = () => {
+type Props = {
+  gameAmount: number | null,
+}
+
+const Game:FC<Props> = ({ gameAmount }) => {
+  const gameTurnAmount = gameAmount || 3;
   const [playersChoice, setplayersChoice] = useState('');
   const [playersPoints, setplayersPoints] = useState(0);
 
@@ -25,7 +30,6 @@ const Game = () => {
   const [finalWinner, setFinalWinner] = useState<null | number>(null);
 
   const [canKeepPlaying, setcanKeepPlaying] = useState(true);
-  const [gameTurnAmount, setgameTurnAmount] = useState(7);
   const [counterOfCurrentChoicePresses, setcounterOfCurrentChoicePresses] = useState(0);
   const [tieCount, setTieCount] = useState(0);
   const [gameOver, setgameOver] = useState(false);
@@ -114,7 +118,6 @@ const Game = () => {
           setplayersChoice(choice);
           setgameOver(true);
           setcanKeepPlaying(false);
-          // Play TADAAAA sound!
         }, 800);
       }
     }
@@ -127,7 +130,6 @@ const Game = () => {
           const randNum = Math.round(Math.random() * computersAvailableChoices.length - 1);
           const computerChosed = computersAvailableChoices[randNum < 0 ? 0 : randNum];
           setComputersChoice(computerChosed);
-          // play soybnd
           computerActedSound.play();
           setcounterOfCurrentChoicePresses(counterOfCurrentChoicePresses + 1);
         }, 500);
@@ -143,7 +145,11 @@ const Game = () => {
           <div className="block__card">
             {(!computersChoice && !computerThinking) && noEntryYet}
             {(computerThinking)
-              ? 'Thinking...'
+              ? (
+                <div className="hand-card" style={{ filter: 'none' }}>
+                  <img className="card-image no-shadow" src={thinking} alt="" />
+                </div>
+              )
               : computersChoice && (<ChosenCard cardImg={computersChoice} gameOver={gameOver} />)}
           </div>
         </div>
