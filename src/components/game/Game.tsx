@@ -91,7 +91,7 @@ const Game:FC<Props> = ({ gameAmount }) => {
           setplayersPoints(playersPoints + 1);
         } else {
           setWhoWonRound('Computer gets a point');
-          setplayersPoints(playersPoints + 1);
+          setComputersPoints(computersPoints + 1);
         }
         break;
       default:
