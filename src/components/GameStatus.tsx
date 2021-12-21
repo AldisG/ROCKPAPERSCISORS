@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 type Props ={
   counterOfCurrentChoicePresses: number,
@@ -7,14 +7,20 @@ type Props ={
   canKeepPlaying: boolean,
   finalWinner: null | number,
 }
-
+const looseGameWavpath = '../assets/sounds/laserShoot.wav';
 const GameStatus:FC<Props> = ({
   counterOfCurrentChoicePresses,
   whoWonRound,
   canKeepPlaying,
   finalWinner,
 }) => {
+  // const looseGameWav = new Audio(looseGameWavpath);
+  const [canShowResults, setcanShowResults] = useState(false);
+  setTimeout(() => {
+    setcanShowResults(true);
+  }, 1000);
   const finalWinnerIs = () => {
+    // play win or loose sounds
     if (finalWinner) {
       if (finalWinner === 0) {
         return "It's a tie!";

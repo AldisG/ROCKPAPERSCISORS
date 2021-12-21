@@ -5,6 +5,10 @@ import ChosenCard from '../card/ChosenCard';
 import { cardList } from '../cardsToDisplay';
 import GameStatus from '../GameStatus';
 import './Game.scss';
+
+// @ts-ignore
+import computerActed from '../../assets/sounds/compActed.wav';
+
 // span of ? sign
 const noEntryYet = (<span className="no-entry-yet">?</span>);
 const computersAvailableChoices = cardList.map(({ cardName }) => cardName);
@@ -25,35 +29,9 @@ const Game = () => {
   const [counterOfCurrentChoicePresses, setcounterOfCurrentChoicePresses] = useState(0);
   const [tieCount, setTieCount] = useState(0);
 
-  const [controlWinLoosePoints, setcontrolWinLoosePoints] = useState(-1);
+  const computerActedSound = new Audio(computerActed);
+  computerActedSound.volume = 0.2;
 
-  // useEffect(() => {
-  //   if (controlWinLoosePoints === 1) {
-  //     setWhoWonRound('Player gets a point');
-  //     setplayersPoints(playersPoints + 1);
-  //   } else if (controlWinLoosePoints === 0) {
-  //     setWhoWonRound('Computer gets a point');
-  //     setComputersPoints(computersPoints + 1);
-  //   } else if (controlWinLoosePoints === 2) {
-  //     setWhoWonRound('Looks like it is tie!');
-  //     setTieCount(tieCount + 1);
-  //   }
-  //   console.log('useEffect', computersChoice, playersChoice);
-  //   console.log(controlWinLoosePoints);
-  // }, [computersChoice]);
-
-  // const [gameEnded, setGameEnded] = useState(false);
-  // const controlWinLoosePoints = (indicator: number) => {
-  //   if (indicator === 1) {
-  //     setWhoWonRound('Player gets a point');
-  //     setplayersPoints(playersPoints + 1);
-  //     console.log('playersPoints won +1');
-  //   } else if (indicator === 0) {
-  //     setWhoWonRound('Computer gets a point');
-  //     setComputersPoints(computersPoints + 1);
-  //     console.log('computersPoints won +1');
-  //   }
-  // };
   useEffect(() => {
     if (!computersChoice || !playersChoice) {
       setWhoWonRound('Choose your move!');
@@ -129,9 +107,12 @@ const Game = () => {
     if (canKeepPlaying) {
       if (!computerThinking) {
         if (counterOfCurrentChoicePresses === gameTurnAmount - 1) {
-          setplayersChoice(choice);
-          setcanKeepPlaying(false);
-          determineWinner();
+          setTimeout(() => {
+            setplayersChoice(choice);
+            setcanKeepPlaying(false);
+            determineWinner();
+            // Play TADAAAA sound!
+          }, 200);
         }
       }
       if (counterOfCurrentChoicePresses < gameTurnAmount) {
@@ -142,6 +123,8 @@ const Game = () => {
           const randNum = Math.round(Math.random() * computersAvailableChoices.length - 1);
           const computerChosed = computersAvailableChoices[randNum < 0 ? 0 : randNum];
           setComputersChoice(computerChosed);
+          // play soybnd
+          computerActedSound.play();
           setcounterOfCurrentChoicePresses(counterOfCurrentChoicePresses + 1);
         }, 200);
       }
