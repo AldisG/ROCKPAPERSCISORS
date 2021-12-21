@@ -148,6 +148,15 @@ $blackTransparent: #2D2B2C20;
   .card-image{
     width: 100%;
   }
+  &.no-card-effects{
+    cursor: default;
+    opacity: .3;
+    &:hover{
+      scale: 1;
+      transform: translateY(0);
+      filter: drop-shadow(0px 4px 3px #33333399);
+    }
+  }
 }
 .hand-card.chosen{
   filter: drop-shadow(0px 18px 3px #33333399);
@@ -156,6 +165,12 @@ $blackTransparent: #2D2B2C20;
   &:hover{
     transform: translateY(0);
   }
+  & .hide{
+    opacity: .3 !important;
+  }
+}
+.hand-card.chosen.hide{
+    opacity: .3 !important;
 }
 .block__card{
   display: flex;

@@ -1,4 +1,5 @@
 $accent-green: #9ADC68;
+$accent-green-dark: #5a9131;
 $black: #2D2B2C;
 
 *, a, h1, h2, h3, h4, h5, h6 {
@@ -24,21 +25,32 @@ div{
   background-color: $black;
 }
 .App-header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
   background-color: $black;
   width: 100%;
   text-align: center;
   user-select: none;
+  padding: 20px;
   h1{
     color: $accent-green;
     font-size: 2rem;
     font-weight: 800;
-    padding: 10px;
     padding-bottom: 0;
   }
 }
 .mute-button{
-  padding: 10px;
   background-color: #fff;
-  color: $accent-green;
-  width: 100px;
+  color: #333;
+  width: auto;
+  height: max-content;
+  padding: 10px;
+  &:hover, &:focus{
+    background-color: $accent-green;
+  }
+  &:active{
+    background-color: $accent-green-dark;
+  }
 }

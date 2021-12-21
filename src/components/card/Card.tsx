@@ -12,31 +12,38 @@ type Props = {
     img:string,
   },
   computerThinking: boolean,
-  playerChosedCard: (value: string) => void
+  playerChosedCard: (value: string) => void,
+  gameOver: boolean
 }
 
-const Card:FC<Props> = ({ handCard, playerChosedCard, computerThinking }) => {
+const Card:FC<Props> = ({
+  handCard, playerChosedCard, computerThinking, gameOver,
+}) => {
   const { cardName, img } = handCard;
   const hoverSound = new Audio(hover);
   const clickSound = new Audio(click);
   const cantClickSound = new Audio(cantClick);
-  hoverSound.volume = 0.2;
+  hoverSound.volume = 0.1;
   clickSound.volume = 0.5;
   cantClickSound.volume = 0.3;
   return (
     <div
-      className="hand-card"
+      className={`hand-card ${gameOver && 'no-card-effects'}`}
       onClick={() => {
-        if (!computerThinking) {
-          playerChosedCard(cardName);
-          clickSound.play();
-        }
-        if (computerThinking) {
-          cantClickSound.play();
+        if (!gameOver) {
+          if (!computerThinking) {
+            playerChosedCard(cardName);
+            clickSound.play();
+          }
+          if (computerThinking) {
+            cantClickSound.play();
+          }
         }
       }}
       onMouseEnter={() => {
-        hoverSound.play();
+        if (!gameOver) {
+          hoverSound.play();
+        }
       }}
     >
       <img src={img} alt="" className="card-image" />

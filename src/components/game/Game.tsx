@@ -28,6 +28,7 @@ const Game = () => {
   const [gameTurnAmount, setgameTurnAmount] = useState(7);
   const [counterOfCurrentChoicePresses, setcounterOfCurrentChoicePresses] = useState(0);
   const [tieCount, setTieCount] = useState(0);
+  const [gameOver, setgameOver] = useState(false);
 
   const computerActedSound = new Audio(computerActed);
   computerActedSound.volume = 0.2;
@@ -94,27 +95,30 @@ const Game = () => {
     }
   }, [counterOfCurrentChoicePresses]);
 
-  const determineWinner = () => {
-    if (playersPoints > computersPoints) {
-      setFinalWinner(1);
-    } if (playersPoints < computersPoints) {
-      setFinalWinner(0);
-    } if (playersPoints === computersPoints) {
+  useEffect(() => {
+    if (playersPoints === computersPoints) {
       setFinalWinner(2);
     }
-  };
+    if (playersPoints > computersPoints) {
+      setFinalWinner(1);
+    }
+    if (playersPoints < computersPoints) {
+      setFinalWinner(0);
+    }
+  }, [playersPoints, computersPoints, tieCount]);
+
   const playerChosedCard = (choice: string) => {
-    if (canKeepPlaying) {
-      if (!computerThinking) {
-        if (counterOfCurrentChoicePresses === gameTurnAmount - 1) {
-          // setTimeout(() => {
+    if (!computerThinking) {
+      if (counterOfCurrentChoicePresses === gameTurnAmount - 1) {
+        setTimeout(() => {
           setplayersChoice(choice);
+          setgameOver(true);
           setcanKeepPlaying(false);
-          determineWinner();
           // Play TADAAAA sound!
-          // }, 1500);
-        }
+        }, 800);
       }
+    }
+    if (canKeepPlaying) {
       if (counterOfCurrentChoicePresses < gameTurnAmount) {
         setplayersChoice(choice);
         setComputerThinking(true);
@@ -140,7 +144,7 @@ const Game = () => {
             {(!computersChoice && !computerThinking) && noEntryYet}
             {(computerThinking)
               ? 'Thinking...'
-              : computersChoice && (<ChosenCard cardImg={computersChoice} />)}
+              : computersChoice && (<ChosenCard cardImg={computersChoice} gameOver={gameOver} />)}
           </div>
         </div>
         <div className="score-block game__block">
@@ -174,7 +178,7 @@ const Game = () => {
         <div className="player-block game__block">
           <h3 className="block__header">Player</h3>
           <div className="block__card">
-            {playersChoice ? (<ChosenCard cardImg={playersChoice} />) : noEntryYet}
+            {playersChoice ? (<ChosenCard cardImg={playersChoice} gameOver={gameOver} />) : noEntryYet}
           </div>
 
         </div>
@@ -186,6 +190,7 @@ const Game = () => {
             key={handCard.cardName}
             handCard={handCard}
             computerThinking={computerThinking}
+            gameOver={gameOver}
           />
         ))}
       </div>

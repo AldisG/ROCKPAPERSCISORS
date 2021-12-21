@@ -1,5 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
-import { FC, useState } from 'react';
+import { FC } from 'react';
+// @ts-ignore
+import hover from '../assets/sounds/jump.wav';
+// @ts-ignore
+import wonRound from '../assets/sounds/wonRound.wav';
 
 type Props ={
   counterOfCurrentChoicePresses: number,
@@ -7,32 +11,27 @@ type Props ={
   canKeepPlaying: boolean,
   finalWinner: null | number,
 }
-const looseGameWavpath = '../assets/sounds/laserShoot.wav';
 const GameStatus:FC<Props> = ({
   counterOfCurrentChoicePresses,
   whoWonRound,
   canKeepPlaying,
   finalWinner,
 }) => {
-  // const looseGameWav = new Audio(looseGameWavpath);
-  const [canShowResults, setcanShowResults] = useState(false);
-  setTimeout(() => {
-    setcanShowResults(true);
-  }, 1000);
+  const hoverSound = new Audio(hover);
+  const wonRoundSound = new Audio(wonRound);
+  hoverSound.volume = 0.1;
+  wonRoundSound.volume = 0.2;
   const finalWinnerIs = () => {
-    // play win or loose sounds
-    if (finalWinner) {
-      if (finalWinner === 0) {
-        return "It's a tie!";
-      }
-      if (finalWinner === 1) {
-        return 'Player won!';
-      }
-      if (finalWinner === 2) {
-        return 'Computer won!';
-      }
+    if (finalWinner === 2) {
+      return "It's a tie!";
     }
-    return '';
+    if (finalWinner === 1) {
+      return 'Player won!';
+    }
+    if (finalWinner === 0) {
+      return 'Computer won!';
+    }
+    return 'Computer won?';
   };
   if (canKeepPlaying) {
     return (
@@ -46,6 +45,8 @@ const GameStatus:FC<Props> = ({
       </div>
     );
   }
+  wonRoundSound.play();
+
   return (
     <div className="game-over-screen">
       <h3 className="who-wins--game">
@@ -55,7 +56,12 @@ const GameStatus:FC<Props> = ({
         {finalWinnerIs()}
       </h3>
       <form>
-        <button className="play-again">Play Again</button>
+        <button
+          className="play-again"
+          onMouseEnter={() => hoverSound.play()}
+        >
+          Play Again
+        </button>
       </form>
     </div>
   );
