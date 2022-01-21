@@ -1,5 +1,19 @@
 # Getting Started with Create React App
 
+# This is a simple Rock, Papper, Scissors, Lizzard, Spock game
+
+---
+
+- Game's goal is to get more points than the computer.
+- First press start and choose game mode (how many rounds you want), then play!
+- Each round you choose what sign will you choose and the computer will choose his.
+- After the amound of rounds you chose is done, final score (the winner or tie) will be shown.
+- You can choose to play again, when the game is over.
+
+---
+
+- Game's logic is in Games component and UI is spreaded trough App, Game components
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
