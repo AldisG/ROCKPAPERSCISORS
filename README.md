@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+![](https://github.com/AldisG/RockPaperScissorsGameGif/blob/main/RockPapperSpock.gif)
 
 # This is a simple Rock, Papper, Scissors, Lizzard, Spock game
 
