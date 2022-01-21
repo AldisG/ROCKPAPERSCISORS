@@ -1,10 +1,17 @@
-$accent-red: #CC3260;
-$accent-green: #9ADC68;
-$accent-blue: #4280DE;
+$accent-red: #cc3260;
+$accent-green: #9adc68;
+$accent-blue: #4280de;
 $accent-green-dark: #5a9131;
-$black: #2D2B2C;
+$black: #2d2b2c;
 
-*, a, h1, h2, h3, h4, h5, h6 {
+*,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -13,20 +20,22 @@ $black: #2D2B2C;
   color: $black;
   font-size: 18px;
 }
-a, button{
+a,
+button {
   cursor: pointer;
 }
-div{
+div {
   border-radius: 8px;
 }
-.App{
+.App {
   display: grid;
   grid-template-rows: auto 1fr;
   min-height: 100vh;
   gap: 10px;
   background-color: $black;
+  overflow: hidden;
 }
-.App-header{
+.App-header {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,74 +45,73 @@ div{
   text-align: center;
   user-select: none;
   padding: 20px;
-  h1{
+  h1 {
     color: $accent-green;
     font-size: 2rem;
     font-weight: 800;
     padding-bottom: 0;
   }
 }
-.mute-button{
+.mute-button {
   background-color: #fff;
   color: #333;
   width: auto;
   height: max-content;
   padding: 10px;
-  &:hover, &:focus{
+  &:hover,
+  &:focus {
     background-color: $accent-green;
   }
-  &:active{
+  &:active {
     background-color: $accent-green-dark;
   }
 }
 // MODAL & GAME SETUP
-.modal-wrapper{
+.modal-wrapper {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index:3;
+  z-index: 3;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
-  transition: opacity .2s;
-  &.hide-modal{
+  transition: opacity 0.2s;
+  &.hide-modal {
     opacity: 0;
     cursor: default;
     pointer-events: none;
   }
 }
-.button-dificulity{
+.button-dificulity {
   z-index: 100;
 }
-.modal-game-start{
+.modal-game-start {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: sticky;
   gap: 30px;
   align-items: center;
   padding: 50px;
   position: absolute;
-  min-height: 500px;
   min-width: 500px;
-  // max-width: 900px;
-  z-index: 2;
+  z-index: 12;
   background-color: rgb(239, 245, 245);
 }
-.game-dificulity--h1{
+.game-dificulity--h1 {
   font-size: 3rem;
 }
-.game-rules{
+.game-rules {
   display: flex;
   align-items: center;
   width: 100%;
   justify-content: space-around;
-  .rules{
+  .rules {
     max-width: 450px;
   }
 }
-.rules{
-
+.rules {
   font-size: 1.2rem;
   display: grid;
   justify-items: center;
@@ -112,8 +120,8 @@ div{
   outline: 4px solid $black;
   padding: 20px;
   position: relative;
-  &::after{
-    content: '';
+  &::after {
+    content: "";
     position: absolute;
     top: 30%;
     right: -25px;
@@ -126,22 +134,22 @@ div{
     // z-index: -1;
   }
 }
-.mascot{
-  img{
-    max-width:  300px;
+.mascot {
+  img {
+    max-width: 300px;
     filter: drop-shadow(0px 10px 8px #33333399);
   }
 }
-.game-dificulity--h3{
+.game-dificulity--h3 {
   font-size: 2rem;
 }
-.game-dificulity{
+.game-dificulity {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.button-dificulity{
+.button-dificulity {
   font-size: 1.6rem;
   padding: 10px 30px;
   background-color: $accent-green;
@@ -149,20 +157,21 @@ div{
   border: none;
   border-radius: 8px;
   box-shadow: 0px 10px 8px #33333399;
-  &:hover, &:focus{
+  &:hover,
+  &:focus {
     outline: 5px solid $accent-blue;
   }
-  &:active{
+  &:active {
     outline: 8px solid $accent-red;
   }
 }
 // BG
-.modal-game-start-bg{
+.modal-game-start-bg {
   position: absolute;
   height: 120vh;
   width: 120vw;
   z-index: 1;
-  background-image: url('./assets/bg.jpg');
+  background-image: url("./assets/bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

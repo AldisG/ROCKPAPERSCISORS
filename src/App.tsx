@@ -1,15 +1,15 @@
-import './App.scss';
-import { useState } from 'react';
-import Game from './components/game/Game';
-import mascot from './assets/hero.png';
-import tutorial from './assets/tutorial.png';
+import "./App.scss";
+import { useState } from "react";
+import Game from "./components/game/Game";
+import mascot from "./assets/hero.png";
+import tutorial from "./assets/tutorial.png";
 
 // @ts-ignore
-import gameMusic from './assets/sounds/BGmusic.wav';
+import gameMusic from "./assets/sounds/BGmusic.wav";
 // @ts-ignore
-import hover from './assets/sounds/jump.wav';
+import hover from "./assets/sounds/jump.wav";
 // @ts-ignore
-import click from './assets/sounds/hitHurt.wav';
+import click from "./assets/sounds/hitHurt.wav";
 
 const App = () => {
   const bgMusic = new Audio(gameMusic);
@@ -26,32 +26,34 @@ const App = () => {
   };
   return (
     <div className="App">
-      <div className={`modal-wrapper ${gameAmount && 'hide-modal'}`}>
+      <div className={`modal-wrapper ${gameAmount && "hide-modal"}`}>
         {!audiFix && (
-        <div
-          className="button-dificulity"
-          onClick={() => {
-            clickSound.play();
-            setAudioFix(true);
-            if (bgMusic.paused) {
-              bgMusic.play();
-            } else {
-              bgMusic.pause();
-            }
-          }}
-        >
-          START
-        </div>
+          <div
+            className="button-dificulity"
+            onClick={() => {
+              clickSound.play();
+              setAudioFix(true);
+              if (bgMusic.paused) {
+                bgMusic.play();
+              } else {
+                bgMusic.pause();
+              }
+            }}
+          >
+            START
+          </div>
         )}
         {audiFix && (
           <div className="modal-game-start">
-            <h1 className="game-dificulity--h1">Rock Paper Scissors And The Rest</h1>
+            <h1 className="game-dificulity--h1">
+              Rock Paper Scissors And The Rest
+            </h1>
             <div className="game-rules">
               <div className="rules">
                 <b>The game is simple.</b>
                 <br />
-                Each symbol beats two (arrow to) and gets beaten by two (arrow from).
-                Here is the (penta)gram, on how it works.
+                Each symbol beats two (arrow to) and gets beaten by two (arrow
+                from). Here is the (penta)gram, on how it works.
                 <br />
                 Good luck!
                 <div className="mascot tutorial">
@@ -70,7 +72,6 @@ const App = () => {
                 onClick={() => playSoundSetDificulity(3)}
               >
                 3x
-
               </button>
               <button
                 className="button-dificulity"
@@ -78,7 +79,6 @@ const App = () => {
                 onClick={() => playSoundSetDificulity(5)}
               >
                 5x
-
               </button>
               <button
                 className="button-dificulity"
@@ -86,7 +86,6 @@ const App = () => {
                 onClick={() => playSoundSetDificulity(7)}
               >
                 7x
-
               </button>
             </div>
           </div>
